@@ -1,6 +1,6 @@
 console.log("Hi");
 const name = document.getElementById("username");
-const user = document.getElementById("user");
+//const user = document.getElementById("user");
 const city = document.getElementById("cityname");
 const age = document.getElementById("age");
 const phone = document.getElementById("phonenumber");
@@ -40,7 +40,7 @@ name.addEventListener('input',()=>{
         return flag1;
     }
 })
-
+/*
 user.addEventListener('input',()=>{
     document.getElementById("errormessage").style.display="none"
 })
@@ -65,14 +65,14 @@ user.addEventListener('input',()=>{
     }
 })
 
+*/
 
-
-city.addEventListener('focus',()=>{
+city.addEventListener('input',()=>{
     document.getElementById("errormessage2").style.display="none"
 })
 
 
-city.addEventListener('blur',()=>{
+city.addEventListener('input',()=>{
   
     let reg = /^[A-Z][a-zA-Z ]*[a-zA-Z]$/;
     let inp = city.value;
@@ -93,12 +93,12 @@ city.addEventListener('blur',()=>{
 
 
 
-age.addEventListener('focus',()=>{
+age.addEventListener('input',()=>{
     document.getElementById("errormessage3").style.display="none"
 })
 
 
-age.addEventListener('blur',()=>{
+age.addEventListener('input',()=>{
   
     let reg = /^[1-9]$|^[1-9][0-9]$|^[1][0-1][0-9]$/;
     let inp = age.value;
@@ -117,12 +117,12 @@ age.addEventListener('blur',()=>{
     }
 })
 
-phone.addEventListener('focus',()=>{
+phone.addEventListener('input',()=>{
     document.getElementById("errormessage4").style.display="none"
 })
 
 
-phone.addEventListener('blur',()=>{
+phone.addEventListener('input',()=>{
   
     let reg = /^(\+?91(\-)?)?(0)?[9876][0-9]{9}$/;
     let inp = phone.value;
@@ -142,12 +142,12 @@ phone.addEventListener('blur',()=>{
 })
 
 
-email.addEventListener('focus',()=>{
+email.addEventListener('input',()=>{
     document.getElementById("errormessage5").style.display="none"
 })
 
 
-email.addEventListener('blur',()=>{
+email.addEventListener('input',()=>{
   
     let reg = /^[a-zA-Z0-9][a-zA-Z0-9\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\.]*[a-zA-Z0-9]@([a-zA-Z]+[.])+[a-zA-z]+$/;
     let inp = email.value;
@@ -167,12 +167,12 @@ email.addEventListener('blur',()=>{
 })
 
 
-password.addEventListener('focus',()=>{
+password.addEventListener('input',()=>{
     document.getElementById("errormessage6").style.display="none"
 })
 
 
-password.addEventListener('blur',()=>{
+password.addEventListener('input',()=>{
   
     let reg = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\#\?\!\@\$\%\^\&\*\-\.]).{8,}$/;
    var inp2 = password.value;
@@ -195,12 +195,12 @@ password.addEventListener('blur',()=>{
 })
 
 
-confirmpass.addEventListener('focus',()=>{
+confirmpass.addEventListener('input',()=>{
     document.getElementById("errormessage7").style.display="none"
 })
 
 
-confirmpass.addEventListener('blur',()=>{
+confirmpass.addEventListener('input',()=>{
     var inp2 = password.value;
     var inp3 = confirmpass.value;
     

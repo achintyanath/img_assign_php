@@ -16,13 +16,13 @@
            
         </div>
         <div id="formname">
-            <form id="form1">
+            <form id="form1" action="" method="post">
             <table>
             <tr>
                 <div>
                  
                    <td><label for="username">Name</label></td>
-                    <td><input type="text" id="username" name="username">
+                    <td><input type="text" id="username" name="name">
                     <div id ="errormessage" style="display:none">
                     The name must begin with capital letter and should not include numbers. 
                     
@@ -34,7 +34,7 @@
                 <div>
                  
                    <td><label for="user">Userame</label></td>
-                    <td><input type="text" id="username" name="username">
+                    <td><input type="text" id="user" name="username">
                     <div id ="errormessage" style="display:none">
                     Not a unique user. 
                     
@@ -42,6 +42,7 @@
                     </td>
                </div>
            </tr>
+
            <tr>
             <div>
                 <td>
@@ -58,13 +59,13 @@
             <tr>
              <div>
              <td>Gender</td>
-                <td><input type="radio" id="male" name="gender" value="male">
+                <td><input type="radio" id="male" name="gender" value="Male">
                 <label for="male">Male</label>
 
-                <input type="radio" id="female" name="gender" value="female">
+                <input type="radio" id="female" name="gender" value="Female">
                 <label for="female">Female</label>
-                <input type="radio" id="other" name="gender" value="other">
-                <label for="other">Other</label><br>
+                <input type="radio" id="other" name="gender" value="Other">
+                <label for="other">Other</label>
                 </td>
             </div>
             </tr>
@@ -89,9 +90,9 @@
                 <td>
                 <select id="qualification" name="qualification">
 
-                        <option value="graduate">Graduate</option>
-                        <option value="postgrad">Post-Graduate</option>
-                        <option value="phd">P.Hd</option>
+                        <option value="Graduate">Graduate</option>
+                        <option value="Post-Grauate">Post-Graduate</option>
+                        <option value="Phd">Phd</option>
                        
                 </select></td>
             </div>
@@ -166,3 +167,32 @@
     <script src="registration_js.js"></script>
 </body>
 </html>
+
+<?php
+
+include "connection.php";
+  
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+$name= $_POST['name'];
+$username= $_POST['username'];
+$city= $_POST['cityname'];
+$gender= $_POST['gender'];
+$age= $_POST['age'];
+$education= $_POST['qualification'];
+$phone= $_POST['phonenumber'];
+$email= $_POST['email'];
+$password= $_POST['password'];
+print("INSERT INTO user VALUES (\"". $username ."\",\"". $name ."\",\"". $city ."\",\"". $gender."\",". $age .",\"". $education ."\",". $phone .",\"". $email ."\",\"". $password ."\");");
+
+$connection = $mysqli->query("INSERT INTO user VALUES (\"". $username ."\",\"". $name ."\",\"". $city ."\",\"". $gender."\",". $age .",\"". $education ."\",". $phone .",\"". $email ."\",\"". $password ."\");");
+
+}
+
+
+
+
+
+
+
+?>
