@@ -1,3 +1,34 @@
+<?php
+session_start();
+include "connection.php";
+  
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+$name= $_POST['name'];
+$username= $_POST['username'];
+$city= $_POST['cityname'];
+$gender= $_POST['gender'];
+$age= $_POST['age'];
+$education= $_POST['qualification'];
+$phone= $_POST['phonenumber'];
+$email= $_POST['email'];
+$password= $_POST['password'];
+print("INSERT INTO user VALUES (\"". $username ."\",\"". $name ."\",\"". $city ."\",\"". $gender."\",". $age .",\"". $education ."\",". $phone .",\"". $email ."\",\"". $password ."\");");
+
+$connection = $mysqli->query("INSERT INTO user VALUES (\"". $username ."\",\"". $name ."\",\"". $city ."\",\"". $gender."\",". $age .",\"". $education ."\",". $phone .",\"". $email ."\",\"". $password ."\");");
+$_SESSION['username']=$username;
+echo $_SESSION['username'];
+header('location:update.php');
+
+}
+
+
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -168,31 +199,3 @@
 </body>
 </html>
 
-<?php
-
-include "connection.php";
-  
-
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-$name= $_POST['name'];
-$username= $_POST['username'];
-$city= $_POST['cityname'];
-$gender= $_POST['gender'];
-$age= $_POST['age'];
-$education= $_POST['qualification'];
-$phone= $_POST['phonenumber'];
-$email= $_POST['email'];
-$password= $_POST['password'];
-print("INSERT INTO user VALUES (\"". $username ."\",\"". $name ."\",\"". $city ."\",\"". $gender."\",". $age .",\"". $education ."\",". $phone .",\"". $email ."\",\"". $password ."\");");
-
-$connection = $mysqli->query("INSERT INTO user VALUES (\"". $username ."\",\"". $name ."\",\"". $city ."\",\"". $gender."\",". $age .",\"". $education ."\",". $phone .",\"". $email ."\",\"". $password ."\");");
-
-}
-
-
-
-
-
-
-
-?>

@@ -11,15 +11,15 @@
     Welcome To Chatbook!
     </h1>
 <div id ="container">
-<form id="form2">
+<form id="form2" action="check.php" method="post">
 
     <table>
     
     <tr>
                 <div>
                  
-                   <td><label for="user">Userame</label></td>
-                    <td><input type="text" id="user" name="user">
+                   <td><label for="username">Username</label></td>
+                    <td><input type="text" id="username" name="username">
                     
                     </td>
                </div>
