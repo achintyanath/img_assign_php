@@ -1,3 +1,34 @@
+<?php
+session_start();
+
+include "connection.php";
+
+$username=$_POST['username'];
+$password=$_POST['password'];
+//print_r($_POST);
+//echo $username;
+//echo $password;
+if($_SERVER['REQUEST_METHOD']=="POST"){
+$selection = " SELECT user_name, pass FROM user WHERE user_name= '$username' AND pass='$password'";
+
+$numofrows = mysqli_num_rows(mysqli_query($mysqli,$selection));
+//echo $numofrows;
+//$validate=false;
+
+if($numofrows==1){
+    //echo "You are logged in";
+    $_SESSION['username']= $username;
+    header('location:chat.php');
+}
+else{
+    echo '<script>
+    window.alert("Wrong username or password");
+    </script>';
+}
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +42,9 @@
     Welcome To Chatbook!
     </h1>
 <div id ="container">
-<form id="form2" action="check.php" method="post">
-
-    <table>
+<form id="form2" action="" method="post">
+<div id="container2">
+    <table id ="table">
     
     <tr>
                 <div>
@@ -52,6 +83,7 @@
             </table>
     </form>
     </table>
+    </div>
     <div id ="reges">
     <p>
     Don't have a account. <a href ="registration.php">Sign in</a>

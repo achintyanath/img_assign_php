@@ -1,6 +1,6 @@
 console.log("Hi");
 const name = document.getElementById("username");
-//const user = document.getElementById("user");
+const user = document.getElementById("user");
 const city = document.getElementById("cityname");
 const age = document.getElementById("age");
 const phone = document.getElementById("phonenumber");
@@ -40,32 +40,41 @@ name.addEventListener('input',()=>{
         return flag1;
     }
 })
-/*
-user.addEventListener('input',()=>{
-    document.getElementById("errormessage").style.display="none"
-})
 
 
 user.addEventListener('input',()=>{
   
-    let reg = /^[A-Z][a-zA-Z\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\.]*$/;
-    let inp = name.value;
-    console.log(reg,inp);
-    if(reg.test(inp)){
-        console.log("Matched");
-        num++;
-        flag8=true;
-        return flag8;
+   const xhr = new XMLHttpRequest();
+    xhr.open("POST", "check2.php", true);
+
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+   const param= "username="+`${user.value}`;
+   // const param2 = "Array(username="+`${user.value}`+")";
+   xhr.onload = function () {
+    var obj = this.responseText;
+   // console.log(obj);
+    if(obj=="yes"){
+        document.getElementById("mess").innerHTML="Username available";
+        user.style.border= "3px solid green"
+           
+          
+    
     }
     else{
-        console.log("Not Matched");
-        document.getElementById("errormessage").style.display="inline";
-        flag8=false;
-        return flag8;
+        document.getElementById("mess").innerHTML="Username already taken";
+        user.style.border= "3px solid red"
     }
+    //console.log(obj);
+    
+    
+}
+
+console.log(param);
+    xhr.send(param);
+    
 })
 
-*/
+
 
 city.addEventListener('input',()=>{
     document.getElementById("errormessage2").style.display="none"

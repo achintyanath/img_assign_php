@@ -14,7 +14,7 @@ echo $_SESSION['username'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="update.css">
     <title>Pesrsonal Details</title>
 </head>
 <body>
@@ -52,40 +52,46 @@ echo $_SESSION['username'];
     $col9 =$row['pass'];
     
     echo "<table>
-     <tr>
+     <!--<tr>
     <td>Username</td>
     <td>$col1</td>
-    <td>Edit</td>
-    </tr>
+    <td><button id = \"buttonname\">Edit</button></td>
+    <td id= \"rowname\"></td>
+    </tr>-->
 
     <tr>
     <td>Name</td>
     <td>$col2</td>
-    <td>Edit</td>
+    <td><button id = \"buttonname\">Edit</button></td>
+    <td id= \"rowname\"></td>
     </tr>
 
     <tr>
     <td>City</td>
     <td>$col3</td>
     <td>Edit</td>
+    <td id= \"rowname\"></td>
     </tr>
 
     <tr>
     <td>Gender</td>
     <td>$col4</td>
     <td>Edit</td>
+    <td id= \"rowname\"></td>
     </tr>
 
     <tr>
     <td>Age</td>
     <td>$col5</td>
     <td>Edit</td>
+    <td id= \"rowname\"></td>
     </tr>
 
     <tr>
     <td>Educational Qualification</td>
     <td>$col6</td>
     <td>Edit</td>
+    <td id= \"rowname\"></td>
     </tr>
 
 
@@ -93,6 +99,7 @@ echo $_SESSION['username'];
     <td>Phone</td>
     <td>$col7</td>
     <td>Edit</td>
+    <td id= \"rowname\"></td>
     </tr>
 
 
@@ -100,12 +107,14 @@ echo $_SESSION['username'];
     <td>Email</td>
     <td>$col8</td>
     <td>Edit</td>
+    <td id= \"rowname\"></td>
     </tr>
 
     <tr>
     <td>Password</td>
     <td>$col9</td>
     <td>Edit</td>
+    <td id= \"rowname\"></td>
     </tr>
     </table>
     "
@@ -134,6 +143,6 @@ echo $_SESSION['username'];
     
 
     </div>
-
+    <script src="update.js"></script>
 </body>
 </html>

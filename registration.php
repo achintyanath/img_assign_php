@@ -65,11 +65,8 @@ header('location:update.php');
                 <div>
                  
                    <td><label for="user">Userame</label></td>
-                    <td><input type="text" id="user" name="username">
-                    <div id ="errormessage" style="display:none">
-                    Not a unique user. 
-                    
-                    </div>
+                    <td id ="append"><input type="text" id="user" name="username">
+                   <span id ="mess"></span>
                     </td>
                </div>
            </tr>
