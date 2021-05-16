@@ -1,4 +1,3 @@
-console.log("Hi");
 const name = document.getElementById("username");
 const user = document.getElementById("user");
 const city = document.getElementById("cityname");
@@ -8,236 +7,180 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const confirmpass = document.getElementById("confirmpass");
 const button = document.getElementById("button");
-var flag1 =false;
-var flag2 =false;
-var flag3 =false;
-var flag4 =false;
-var flag5 =false;
-var flag6 =false;
-var flag7 =false;
-var flag8 =false;
-var num=0;
-name.addEventListener('input',()=>{
-    document.getElementById("errormessage").style.display="none"
-})
+//button.disabled = true;
+button.disabled = false;
+var flag1 = false;
+var flag2 = false;
+var flag3 = false;
+var flag4 = false;
+var flag5 = false;
+var flag6 = false;
+var flag7 = false;
+//var flag8 = false;
 
+name.addEventListener("input", () => {
+    document.getElementById("errormessage").style.display = "none";
+});
 
-name.addEventListener('input',()=>{
-  
+name.addEventListener("input", () => {
     let reg = /^[A-Z][a-zA-Z\.\' ]*[a-zA-Z]$/;
     let inp = name.value;
-    console.log(reg,inp);
-    if(reg.test(inp)){
-        console.log("Matched");
-        num++;
-        flag1=true;
-        return flag1;
-    }
-    else{
-        console.log("Not Matched");
-        document.getElementById("errormessage").style.display="inline";
-        flag1=false;
-        return flag1;
-    }
-})
 
+    if (reg.test(inp)) {
+        flag1 = true;
+    } else {
+        document.getElementById("errormessage").style.display = "inline";
+        flag1 = false;
+    }
+    check();
+    return flag1;
+});
 
-user.addEventListener('input',()=>{
-  
-   const xhr = new XMLHttpRequest();
+user.addEventListener("input", () => {
+    const xhr = new XMLHttpRequest();
     xhr.open("POST", "check2.php", true);
 
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-   const param= "username="+`${user.value}`;
-   // const param2 = "Array(username="+`${user.value}`+")";
-   xhr.onload = function () {
-    var obj = this.responseText;
-   // console.log(obj);
-    if(obj=="yes"){
-        document.getElementById("mess").innerHTML="Username available";
-        user.style.border= "3px solid green"
-           
-          
-    
-    }
-    else{
-        document.getElementById("mess").innerHTML="Username already taken";
-        user.style.border= "3px solid red"
-    }
-    //console.log(obj);
-    
-    
-}
+    const param = "username=" + `${user.value}`;
 
-console.log(param);
     xhr.send(param);
-    
-})
+    xhr.onload = function () {
+        var obj = this.responseText;
 
+        if (obj == "yes") {
+            document.getElementById("mess").innerHTML = "Username available";
+            user.style.border = "3px solid green";
+        } else {
+            document.getElementById("mess").innerHTML = "Username already taken";
+            user.style.border = "3px solid red";
+        }
+    };
+});
 
+city.addEventListener("input", () => {
+    document.getElementById("errormessage2").style.display = "none";
+});
 
-city.addEventListener('input',()=>{
-    document.getElementById("errormessage2").style.display="none"
-})
-
-
-city.addEventListener('input',()=>{
-  
+city.addEventListener("input", () => {
     let reg = /^[A-Z][a-zA-Z ]*[a-zA-Z]$/;
     let inp = city.value;
-    console.log(reg,inp);
-    if(reg.test(inp)){
-        console.log("Matched");
-       num++
-       flag2=true;
-       return flag2;
+
+    if (reg.test(inp)) {
+        flag2 = true;
+    } else {
+        document.getElementById("errormessage2").style.display = "inline";
+        flag2 = false;
     }
-    else{
-        console.log("Not Matched");
-        document.getElementById("errormessage2").style.display="inline";
-        flag2=false;
-        return flag2;
-    }
-})
+    check();
+    return flag2;
+});
 
+age.addEventListener("input", () => {
+    document.getElementById("errormessage3").style.display = "none";
+});
 
-
-age.addEventListener('input',()=>{
-    document.getElementById("errormessage3").style.display="none"
-})
-
-
-age.addEventListener('input',()=>{
-  
+age.addEventListener("input", () => {
     let reg = /^[1-9]$|^[1-9][0-9]$|^[1][0-1][0-9]$/;
     let inp = age.value;
-    console.log(reg,inp);
-    if(reg.test(inp)){
-        console.log("Matched");
-        num++;
-       flag3=true;
-       return flag3;
+
+    if (reg.test(inp)) {
+        flag3 = true;
+    } else {
+        document.getElementById("errormessage3").style.display = "inline";
+        flag3 = false;
     }
-    else{
-        console.log("Not Matched");
-        document.getElementById("errormessage3").style.display="inline";
-        flag3=false;
-        return flag3;
-    }
-})
+    check();
+    return flag3;
+});
 
-phone.addEventListener('input',()=>{
-    document.getElementById("errormessage4").style.display="none"
-})
+phone.addEventListener("input", () => {
+    document.getElementById("errormessage4").style.display = "none";
+});
 
-
-phone.addEventListener('input',()=>{
-  
+phone.addEventListener("input", () => {
     let reg = /^(\+?91(\-)?)?(0)?[9876][0-9]{9}$/;
     let inp = phone.value;
-    console.log(reg,inp);
-    if(reg.test(inp)){
-        console.log("Matched");
-        num++;
-        flag4=true;
-        return flag4;
+
+    if (reg.test(inp)) {
+        flag4 = true;
+    } else {
+        document.getElementById("errormessage4").style.display = "inline";
+        flag4 = false;
     }
-    else{
-        console.log("Not Matched");
-        document.getElementById("errormessage4").style.display="inline";
-        flag4=false;
-        return flag4;
-    }
-})
+    check();
+    return flag4;
+});
 
+email.addEventListener("input", () => {
+    document.getElementById("errormessage5").style.display = "none";
+});
 
-email.addEventListener('input',()=>{
-    document.getElementById("errormessage5").style.display="none"
-})
-
-
-email.addEventListener('input',()=>{
-  
-    let reg = /^[a-zA-Z0-9][a-zA-Z0-9\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\.]*[a-zA-Z0-9]@([a-zA-Z]+[.])+[a-zA-z]+$/;
+email.addEventListener("input", () => {
+    let reg =
+        /^[a-zA-Z0-9][a-zA-Z0-9\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\.]*[a-zA-Z0-9]@([a-zA-Z]+[.])+[a-zA-z]+$/;
     let inp = email.value;
-    console.log(reg,inp);
-    if(reg.test(inp)){
-        console.log("Matched");
-       num++
-       flag5=true;
-       return flag5;
-    }
-    else{
-        console.log("Not Matched");
-        document.getElementById("errormessage5").style.display="inline";
-        flag5=false;
+
+    if (reg.test(inp)) {
+        flag5 = true;
+    } else {
+        document.getElementById("errormessage5").style.display = "inline";
+        flag5 = false;
         return flag5;
     }
-})
+    check();
+    return flag5;
+});
 
+password.addEventListener("input", () => {
+    document.getElementById("errormessage6").style.display = "none";
+});
 
-password.addEventListener('input',()=>{
-    document.getElementById("errormessage6").style.display="none"
-})
-
-
-password.addEventListener('input',()=>{
-  
+password.addEventListener("input", () => {
     let reg = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\#\?\!\@\$\%\^\&\*\-\.]).{8,}$/;
-   var inp2 = password.value;
-    
-    if(reg.test(inp2)){
-        console.log("Matched");
-       num++
-       flag6=true;
-       document.getElementById("instructions").style.display="none";
-       return flag6;
-      
+    var inp2 = password.value;
+
+    if (reg.test(inp2)) {
+        flag6 = true;
+        document.getElementById("instructions").style.display = "none";
+    } else {
+        document.getElementById("errormessage6").style.display = "inline";
+        document.getElementById("instructions").style.display = "inline";
+        flag6 = false;
     }
-    else{
-        console.log("Not Matched");
-        document.getElementById("errormessage6").style.display="inline";
-        document.getElementById("instructions").style.display="inline";
-        flag6=false;
-        return flag6;
-    }
-})
+    check();
+    return flag6;
+});
 
+confirmpass.addEventListener("input", () => {
+    document.getElementById("errormessage7").style.display = "none";
+});
 
-confirmpass.addEventListener('input',()=>{
-    document.getElementById("errormessage7").style.display="none"
-})
-
-
-confirmpass.addEventListener('input',()=>{
+confirmpass.addEventListener("input", () => {
     var inp2 = password.value;
     var inp3 = confirmpass.value;
-    
-    if(inp2==inp3){
-        console.log("Matched");
-        num++
-       flag7=true;
-       return flag7;
-        
-    }
-    else{
-        console.log("Not Matched");
-        document.getElementById("errormessage7").style.display="inline";
-        flag7=false;
-        return flag7;
-    }
-})
-button.addEventListener('click',submit);
-function submit(){
-    if(flag1&&flag2&&flag3&&flag4&&flag5&&flag6&&flag7){
-    alert("Form Submiited successfully")
-    }
-    else{
-        alert("Form incomplete or incorrect")
-    }
-}
 
-//console.log(nameid&&confirmpassid&&passwordid&&emailid&&phoneid&&phoneid&&ageid&&cityid)
-//if(nameid&&confirmpassid&&passwordid&&emailid&&phoneid&&phoneid&&ageid&&cityid){
-//button.style.display="inline";
-
+    if (inp2 == inp3) {
+        flag7 = true;
+    } else {
+        document.getElementById("errormessage7").style.display = "inline";
+        flag7 = false;
+    }
+    check();
+    return flag7;
+});
+/*
+function check() {
+    if (flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag7) {
+        button.disabled = false;
+    } else {
+        button.disabled = true;
+    }
+}*/
+button.addEventListener("click", submit);
+/*function submit() {
+    if (flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag7) {
+        alert("Form Submiited successfully");
+    } else {
+        alert("Form incomplete or incorrect");
+    }
+}*/

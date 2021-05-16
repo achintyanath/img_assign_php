@@ -1,2 +1,2 @@
-My PHP Project 
+My PHP Project
 Making a webapp
