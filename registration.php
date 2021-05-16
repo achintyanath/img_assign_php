@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include "connection.php";
 $name_err = "";
 $username_err = "";
@@ -10,6 +10,7 @@ $education_err = "";
 $phone_err = "";
 $email_err = "";
 $password_err = "";
+$confirmpass_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
@@ -21,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = $_POST['phonenumber'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $confirmpass=$_POST['confirmpass'];
 
     $flag1 = false;
     $flag2 = false;
@@ -31,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $flag7 = false;
     $flag8 = false;
     $flag9 = false;
+  
     $flag12 = false;
     //backened validation begins here
 
@@ -64,17 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $flag3 = true;
         }
     }
-    /*
-    if (empty($gender)) {
-        $gender_err = "<p></p>";
-    } else {
-        if (!preg_match("", $gender)) {
-            $gender_err = "<p></p>";
-        } else {
-            $flag4 = true;
-        }
-    }
-*/
+  
+
 
     if (empty($age)) {
         $age_err = "<p>Required Field</p>";
@@ -86,16 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    /*
-    if (empty($education)) {
-        $education_err = "<p></p>";
-    } else {
-        if (!preg_match("", $education)) {
-            $education_err = "<p></p>";
-        } else {
-            $flag6 = true;
-        }
-    }*/
+
 
     if (empty($phone)) {
         $phone_err = "<p>Required Field</p>";
@@ -128,14 +113,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    if (empty($confirmpass)) {
+        $confirmpass_err = "<p>Reuired Feild</p>";
+    } else {
+        if ($confirmpass!=$password) {
+            $confirmpass_err = "<p>Passwords don't match</p>";
+        } else {
+            $flag4 = true;
+        }
+    }
 
 
 
-    if ($flag12) {
+    if ($flag1&&$flag2&&$flag3&&$flag4&&$flag5&&$flag7&&$flag8&&$flag9) {
 
-        print("INSERT INTO user (user_name,name,city,gender,age,education,phone,email,pass) VALUES (\"" . $username . "\",\"" . $name . "\",\"" . $city . "\",\"" . $gender . "\"," . $age . ",\"" . $education . "\"," . $phone . ",\"" . $email . "\",\"" . $password . "\");");
+        //print("INSERT INTO user (user_name,name,city,gender,age,education,phone,email,pass) VALUES (\"" . $username . "\",\"" . $name . "\",\"" . $city . "\",\"" . $gender . "\"," . $age . ",\"" . $education . "\"," . $phone . ",\"" . $email . "\",\"" . $password . "\");");
 
         $connection = $mysqli->query("INSERT INTO user (user_name,name,city,gender,age,education,phone,email,pass) VALUES (\"" . $username . "\",\"" . $name . "\",\"" . $city . "\",\"" . $gender . "\"," . $age . ",\"" . $education . "\"," . $phone . ",\"" . $email . "\",\"" . $password . "\");");
+        session_start();
         $_SESSION['username'] = $username;
         echo $_SESSION['username'];
         header('location:update2.php');
@@ -156,6 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="registration.css">
     <title>Sign In</title>
 
 </head>
@@ -176,11 +172,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <td><label for="username">Name</label></td>
                             <td><input type="text" id="username" name="name">
-                                <div id="errormessage" style="display:none">
+                              
+                                   <div id="errormessage" style="display:none">
                                     The name must begin with capital letter and should not include numbers.
 
                                 </div>
-                            <td><?php echo $name_err ?></td>
+                                <?php echo $name_err ?>
                             </td>
                         </div>
                     </tr>
@@ -189,9 +186,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <td><label for="user">Userame</label></td>
                             <td id="append"><input type="text" id="user" name="username">
-                            <span id ="mess"></span>
-                            <td><?php echo $username_err ?></td>
+                            <span id="mess"></span>
+                            <div id="errormessage8" style="display:none">
+
+                                    Username must be alpha-numeric
+
+                                </div>
+                                <?php echo $username_err ?>
+
+                                
                             </td>
+                           
                         </div>
                     </tr>
 
@@ -206,10 +211,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     The city's name must begin with a capital letter and should not include numbers &
                                     special characters.
                                 </div>
-                            <td><?php echo $city_err ?></td>
+                                <?php echo $city_err ?>
+                            </td>
+                            
+
+                        </div>
+                    </tr>
+
+
+
+
+                    <tr>
+
+                        <div>
+                            <td><label for="gender">Gender</label></td>
+                            <td>
+                                <select id="gender" name="gender">
+
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+
+                                </select>
                             </td>
                         </div>
                     </tr>
+
+
+
+
+                    <!--
                     <tr>
                         <div>
                             <td>Gender</td>
@@ -223,6 +254,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </td>
                         </div>
                     </tr>
+-->
+
+
+
+
+
+
+
+
                     <tr>
 
                         <div>
@@ -234,8 +274,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div id="errormessage3" style="display:none">
                                     Age must be a number between 1-120.
                                 </div>
-                            <td><?php echo $age_err ?></td>
+                                <?php echo $age_err ?>
                             </td>
+                          
                         </div>
                     </tr>
                     <tr>
@@ -244,7 +285,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <td><label for="qualification">Educational Qualification</label></td>
                             <td>
                                 <select id="qualification" name="qualification">
-
+                                    <option value="10th pass">10th pass</option>
+                                    <option value="12th pass">12th pass</option>
                                     <option value="Graduate">Graduate</option>
                                     <option value="Post-Grauate">Post-Graduate</option>
                                     <option value="Phd">Phd</option>
@@ -263,8 +305,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div id="errormessage4" style="display:none">
                                     Enter a valid phone number.
                                 </div>
-                            <td><?php echo $phone_err ?></td>
+                                <?php echo $phone_err ?>
                             </td>
+                           
                         </div>
                     </tr>
                     <tr>
@@ -277,9 +320,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div id="errormessage5" style="display:none">
                                     Enter a valid email-id.
                                 </div>
-                            <td><?php echo $email_err ?></td>
+                                <?php echo $email_err ?>
                             </td>
-
+                          
                         </div>
                     </tr>
                     <tr>
@@ -292,12 +335,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div id="errormessage6" style="display:none">
                                     Enter a valid password<br>
                                 </div>
-                            <td><?php echo $password_err ?></td>
-                            <div id="instructions">
-                                Atleast 8 characters, one upper letter,one lower letter,one number & one special
-                                character.
-                            </div>
+                                <?php echo $password_err ?>
+                                <p id="instructions">
+                                    Atleast 8 characters, one upper letter,one lower letter,one number & one special
+                                    character.
+                                </p>
                             </td>
+                           
                         </div>
                     </tr>
                     <tr>
@@ -310,6 +354,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div id="errormessage7" style="display:none">
                                     Password didn't match.
                                 </div>
+                                <?php echo $confirmpass_err ?>
+                                
                             </td>
                         </div>
                     </tr>

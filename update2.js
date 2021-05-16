@@ -4,7 +4,7 @@ const birth = document.getElementById("birth");
 const work = document.getElementById("work");
 const hobby = document.getElementById("hobby");
 const button = document.getElementById("button");
-button.disabled = true;
+//button.disabled = true;
 var flag1 = false;
 var flag2 = false;
 var flag3 = false;
@@ -105,7 +105,7 @@ hobby.addEventListener("input", () => {
     return flag5;
 });
 
-
+/*
 function check() {
     if (flag1 && flag2 && flag3 && flag4 && flag5 ){
         button.disabled = false;
@@ -118,4 +118,4 @@ function submit() {
     if (flag1 && flag2 && flag3 && flag4 && flag5) {
         alert("Form Submiited successfully");
     }
-}
+}*/

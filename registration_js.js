@@ -7,6 +7,7 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const confirmpass = document.getElementById("confirmpass");
 const button = document.getElementById("button");
+const gender = document.getElementsByName("gender");
 //button.disabled = true;
 button.disabled = false;
 var flag1 = false;
@@ -16,7 +17,7 @@ var flag4 = false;
 var flag5 = false;
 var flag6 = false;
 var flag7 = false;
-//var flag8 = false;
+var flag8 = false;
 
 name.addEventListener("input", () => {
     document.getElementById("errormessage").style.display = "none";
@@ -55,7 +56,40 @@ user.addEventListener("input", () => {
             user.style.border = "3px solid red";
         }
     };
+
+    
 });
+
+
+user.addEventListener("input", () => {
+    document.getElementById("errormessage8").style.display = "none";
+    
+});
+
+
+
+user.addEventListener("input", () => {
+    let reg =/^[a-zA-Z0-9][a-zA-Z0-9]*$/;
+    let inp = user.value;
+
+    if (reg.test(inp)) {
+        flag8 = true;
+    } else {
+        document.getElementById("errormessage8").style.display = "inline";
+        flag8 = false;
+    }
+    check();
+    return flag8;
+    
+});
+
+
+
+
+
+
+
+
 
 city.addEventListener("input", () => {
     document.getElementById("errormessage2").style.display = "none";

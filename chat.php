@@ -189,6 +189,10 @@ Enter a valid email-id.
 
 
     </div>
+    <div>
+    <p id= "change"><a href="update.php"> Click here to update the profile</a>
+    </p>
+    </div>
 </body>
 
 </html>

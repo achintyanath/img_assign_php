@@ -3,37 +3,103 @@ session_start();
 
 
 include "connection.php";
-//print_r($_POST);
+$college_err = "";
+$school_err = "";
+$birth_err = "";
+$work_err = "";
+$hobby_err = "";
+
+
 $username1=$_SESSION['username'];
-$validation=true;
+
+
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
+$college=$_POST['college'];
+$school=$_POST['school'];
+$birth=$_POST['birth'];
+$work=$_POST['work'];
+$hobby=$_POST['hobby'];
+$flag1 = false;
+$flag2 = false;
+$flag3 = false;
+$flag4 = false;
+$flag5 = false;
+
+if (empty($college)) {
+    $college_err = "<p>Required Feild</p>";
+} else {
+    if (!preg_match("/^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/", $college)) {
+        $college_err = "<p> The college name must begin with a capital letter.</p>";
+    } else {
+        $flag1 = true;
+    }
+}
+
+if (empty($school)) {
+    $school_err = "<p>Required Feild</p>";
+} else {
+    if (!preg_match("/^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/", $school)) {
+        $school_err = "<p> The school name must begin with a capital letter.</p>";
+    } else {
+        $flag2 = true;
+    }
+}
+
+
+if (empty($birth)) {
+    $birth_err = "<p>Required Feild</p>";
+} else {
+    if (!preg_match("/^[A-Z][a-zA-Z ]*[a-zA-Z]$/", $birth)) {
+        $birth_err = "<p> The bithplace  must begin with a capital letter.</p>";
+    } else {
+        $flag3 = true;
+    }
+}
+
+
+if (empty($work)) {
+    $work_err = "<p>Required Feild</p>";
+} else {
+    if (!preg_match("/^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/", $work)) {
+        $work_err = "<p> The organisation must begin with a capital letter</p>";
+    } else {
+        $flag4 = true;
+    }
+}
+
+if (empty($hobby)) {
+    $hobby_err = "<p>Required Feild</p>";
+} else {
+    if (!preg_match("/^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/", $hobby)) {
+        $hobby_err = "<p>The name of hoobies must begin with a capital letter</p>";
+    } else {
+        $flag5 = true;
+    }
+}
+
+
+
+
+
+if($flag1&&$flag2&&$flag3&&$flag4&&$flag5){
 foreach($_POST as $key=>$v){
-    //echo $key;
-    //echo $v;
+    
    
     $selection = " UPDATE user SET $key='$v' WHERE user_name= '$username1' ";
     $done = mysqli_query($mysqli,$selection);
     
     
-  // echo " UPDATE user SET $key=\"$v\" WHERE $key= \"$_SESSION[\"username\"]\""
-}
 
+}
+$validation=true;
 $selection = " UPDATE user SET validation='$validation' WHERE user_name= '$username1' ";
 $done = mysqli_query($mysqli,$selection);
 header('location:chat.php');
-/*
-$username=$_POST['username'];
-//print_r($_POST);
-
-
-$numofrows = mysqli_num_rows(mysqli_query($mysqli,$selection));
-//echo $numofrows;
-
-
-
-
-
-*/}
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +120,9 @@ $numofrows = mysqli_num_rows(mysqli_query($mysqli,$selection));
             <h1 id="heading">Welcome to Chatbook!</h1>
 
         </div>
-        <div id="message"><p>You can update your profile </div>
+        <div id="message">
+            <p>You can update your profile
+        </div>
         <div id="formdiv">
             <form id="form3" action="" method="post">
                 <table>
@@ -64,9 +132,13 @@ $numofrows = mysqli_num_rows(mysqli_query($mysqli,$selection));
                             <td><label for="college">College</label></td>
                             <td><input type="text" id="college" name="college">
 
+
+                                <span id="errormessage" style="display:none">The college name must begin with a capital
+                                    letter and cannot be empty</span>
+                                <?php echo $college_err ?>
                             </td>
-                            <td><span id ="errormessage" style="display:none">The college name must begin with a capital letter and cannot be empty</span></td>
-                        </div>
+
+
                     </tr>
                     <tr>
                         <div>
@@ -77,8 +149,12 @@ $numofrows = mysqli_num_rows(mysqli_query($mysqli,$selection));
                                 <input type="text" id="school" name="school">
 
 
+
+                                <span id="errormessage2" style="display:none">The school name must begin with a capital
+                                    letter and cannot be empty</span>
+                                <?php echo $school_err ?>
                             </td>
-                            <td><span id ="errormessage2" style="display:none">The school name must begin with a capital letter and cannot be empty</span></td>
+
                         </div>
                     </tr>
                     <tr>
@@ -90,8 +166,12 @@ $numofrows = mysqli_num_rows(mysqli_query($mysqli,$selection));
                                 <input type="text" id="birth" name="birth">
 
 
+
+                                <span id="errormessage3" style="display:none">The bithplace must begin with a capital
+                                    letter and cannot be empty</span>
+                                <?php echo $birth_err ?>
                             </td>
-                            <td><span id ="errormessage3" style="display:none">The bithplace  must begin with a capital letter and cannot be empty</span></td>
+
                         </div>
                     </tr>
                     <tr>
@@ -100,8 +180,11 @@ $numofrows = mysqli_num_rows(mysqli_query($mysqli,$selection));
                             <td><label for="work">Organisation</label></td>
                             <td><input type="text" id="work" name="work">
 
+                                <span id="errormessage4" style="display:none">The organisation must begin with a capital
+                                    letter and cannot be empty</span>
+                                <?php echo $work_err ?>
                             </td>
-                            <td><span id ="errormessage4" style="display:none">The Organisation must begin with a capital letter and cannot be empty</span></td>
+
                         </div>
                     </tr>
                     <tr>
@@ -110,8 +193,11 @@ $numofrows = mysqli_num_rows(mysqli_query($mysqli,$selection));
                             <td><label for="hobby">Hobbies</label></td>
                             <td><input type="text" id="hobby" name="hobby">
 
+                                <span id="errormessage5" style="display:none">The name of hoobies must begin with a
+                                    capital letter and cannot be empty</span>
+                                <?php echo $hobby_err ?>
                             </td>
-                            <td><span id ="errormessage5" style="display:none">The name of hoobies must begin with a capital letter and cannot be empty</span></td>
+
                         </div>
                     </tr>
                     <tr>

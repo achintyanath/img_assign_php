@@ -116,7 +116,7 @@ echo $_SESSION['username'];
     <td>$col8</td>
     <td><button id = \"buttonname7\">Edit</button></td>
     <td id= \"rowname7\"></td>
-    <td> div id=\"errormessage5\" style=\"display:none\">
+    <td> <div id=\"errormessage5\" style=\"display:none\">
     Enter a valid email-id.
 </div> </td>
     </tr>
@@ -126,6 +126,9 @@ echo $_SESSION['username'];
     <td>$col9</td>
     <td><button id = \"buttonname8\">Edit</button></td>
     <td id= \"rowname8\"></td>
+    <td> <div id=\"errormessage6\" style=\"display:none\">
+    Enter a valid password
+</div> </td>
     </tr>
 
     <tr>
@@ -133,6 +136,9 @@ echo $_SESSION['username'];
     <td>$col10</td>
     <td><button id = \"buttonname9\">Edit</button></td>
     <td id= \"rowname9\"></td>
+    <td> <div id=\"errormessage7\" style=\"display:none\">
+    The college name must begin with a capital letter
+</div> </td>
     </tr>
 
     <tr>
@@ -140,6 +146,9 @@ echo $_SESSION['username'];
     <td>$col11</td>
     <td><button id = \"buttonname10\">Edit</button></td>
     <td id= \"rowname10\"></td>
+    <td> <div id=\"errormessage8\" style=\"display:none\">
+    The school name must begin with a capital letter
+</div> </td>
     </tr>
 
     <tr>
@@ -147,6 +156,9 @@ echo $_SESSION['username'];
     <td>$col12</td>
     <td><button id = \"buttonname11\">Edit</button></td>
     <td id= \"rowname11\"></td>
+    <td> <div id=\"errormessage9\" style=\"display:none\">
+    The bithplace  must begin with a capital letter
+</div> </td>
     </tr>
 
     <tr>
@@ -154,6 +166,9 @@ echo $_SESSION['username'];
     <td>$col13</td>
     <td><button id = \"buttonname12\">Edit</button></td>
     <td id= \"rowname12\"></td>
+    <td> <div id=\"errormessage10\" style=\"display:none\">
+    The organisation must begin with a capital letter.
+</div> </td>
     </tr>
 
     <tr>
@@ -161,6 +176,9 @@ echo $_SESSION['username'];
     <td>$col14</td>
     <td><button id = \"buttonname13\">Edit</button></td>
     <td id= \"rowname13\"></td>
+    <td> <div id=\"errormessage11\" style=\"display:none\">
+    he name of hoobies must begin with a capital letter.
+</div> </td>
     </tr>
 
     </table>
