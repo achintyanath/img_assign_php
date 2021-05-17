@@ -1,5 +1,5 @@
 
-#formid1{
+/*#formid1{
     padding-top: 14px;
 }
 #formid2{
@@ -34,4 +34,12 @@
 }
 #formid12{
     padding-top: 14px;
+}*/
+#display{
+    position:absolute;
+    right: 0px;
+    top:0px;
+}
+#image1{
+    height:50px;
 }

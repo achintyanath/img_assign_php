@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include "imgc.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,12 +11,17 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="chat.css">
     <title>Chatbook</title>
 </head>
 
 <body>
     <div id="container">
-
+        <div id="display">
+            <div id="name9">Username:<?php echo $_SESSION['username']?>
+            </div>
+            <div><img src="<?php echo $imageURL ?>" id="image1" alt="profilephoto"></div>
+        </div>
         <h1 class="heading">Welcome To Chatbook</h1>
         <h2 id="heading2">Here is the list of all users you can chat with.</h2>
 
@@ -190,8 +196,8 @@ Enter a valid email-id.
 
     </div>
     <div>
-    <p id= "change"><a href="update.php"> Click here to update the profile</a>
-    </p>
+        <p id="change"><a href="update.php"> Click here to update the profile</a>
+        </p>
     </div>
 </body>
 

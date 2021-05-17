@@ -1,14 +1,21 @@
-<?php
+<?php 
 session_start();
-
-
 include "connection.php";
+$target_dir = "uploads/";
+$check1=basename($_FILES["fileToUpload"]["name"]);
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+echo $check1;
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+
+
 $college_err = "";
 $school_err = "";
 $birth_err = "";
 $work_err = "";
 $hobby_err = "";
-
+$img_err-"";
 
 $username1=$_SESSION['username'];
 
@@ -27,6 +34,7 @@ $flag2 = false;
 $flag3 = false;
 $flag4 = false;
 $flag5 = false;
+$flag6=false;
 
 if (empty($college)) {
     $college_err = "<p>Required Feild</p>";
@@ -79,12 +87,34 @@ if (empty($hobby)) {
         $flag5 = true;
     }
 }
+ 
+  //$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+  //print_r($check);
+  if($check1 == false) {
+      $flag6=false;
+    $img_err= "No image is selected";
+  
+  }else
+  
+  if ($_FILES["fileToUpload"]["size"] > 500000) {
+  $img_err="<p>File size too large</p>";
+ 
+}else
+   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+     $img_err="Only JPG, JPEG, PNG & GIF files are allowed.";
+     $flag6=false;
+} else
 
+  if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    $flag6=false;
+  } else {
+    $flag6=true;
+    //echo "Done";
+  }
+//print_r($_POST);
+print_r($_FILES);
 
-
-
-
-if($flag1&&$flag2&&$flag3&&$flag4&&$flag5){
+if($flag1&&$flag2&&$flag3&&$flag4&&$flag5&&$flag6){
 foreach($_POST as $key=>$v){
     
    
@@ -94,13 +124,21 @@ foreach($_POST as $key=>$v){
     
 
 }
+
+$selection = " UPDATE user SET image='$target_file' WHERE user_name= '$username1' ";
+$done = mysqli_query($mysqli,$selection);
 $validation=true;
 $selection = " UPDATE user SET validation='$validation' WHERE user_name= '$username1' ";
 $done = mysqli_query($mysqli,$selection);
 header('location:chat.php');
 }
 }
+
+
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,7 +162,7 @@ header('location:chat.php');
             <p>You can update your profile
         </div>
         <div id="formdiv">
-            <form id="form3" action="" method="post">
+            <form id="form3" action="" method="post" enctype="multipart/form-data">
                 <table>
                     <tr>
                         <div>
@@ -202,8 +240,21 @@ header('location:chat.php');
                     </tr>
                     <tr>
                         <div>
+
+                            <td><label for="fileToUpload">Profile Image</label></td>
+                            <td> <input type="file" name="fileToUpload" id="fileToUpload">
+
+                      
+                                <?php echo $img_err ?>
+                            </td>
+                           
+
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
                             <td>
-                                <button type="submit" form="form3" value="Submit" id="button" style>Update</button>
+                            <button type="submit" form="form3" value="Submit" id="button" name ="submit" style>Update</button>
                             </td>
                         </div>
 

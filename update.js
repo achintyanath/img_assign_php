@@ -295,7 +295,7 @@ hobby.addEventListener("click", () => {
   hobby2.addEventListener("input", () => {
     let reg =
       /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/;
-    let inp2 = hoppy2.value;
+    let inp2 = hobby2.value;
 
     if (reg.test(inp2)) {
       

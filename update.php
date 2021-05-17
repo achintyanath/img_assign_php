@@ -1,10 +1,11 @@
 <?php
 session_start();
+include "imgc.php";
 ?>
 <?php
 
 //echo "Please update the fpllowing details";
-echo $_SESSION['username'];
+//echo $_SESSION['username'];
 
 ?>
 
@@ -21,6 +22,12 @@ echo $_SESSION['username'];
 
 <body>
     <div id="container">
+
+    <div id="display">
+            <div id="name9">Username:<?php echo $_SESSION['username']?>
+            </div>
+            <div><img src="<?php echo $imageURL ?>" id="image1" alt="profilephoto"></div>
+        </div>
         <h1>
             Welcome to Chatbook!</h1>
         <p> Please complete your profile</p>
