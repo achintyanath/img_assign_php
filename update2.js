@@ -10,6 +10,7 @@ var flag2 = false;
 var flag3 = false;
 var flag4 = false;
 var flag5 = false;
+var flag10000=false;
 
 
 college.addEventListener("input", () => {
@@ -17,7 +18,7 @@ college.addEventListener("input", () => {
 });
 
 college.addEventListener("input", () => {
-    let reg = /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/;
+                     let reg = /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z ]$/;
     let inp = college.value;
 
     if (reg.test(inp)) {
@@ -37,7 +38,7 @@ school.addEventListener("input", () => {
 });
 
 school.addEventListener("input", () => {
-    let reg = /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/;
+    let reg = /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z ]$/;
     let inp = school.value;
 
     if (reg.test(inp)) {
@@ -55,7 +56,7 @@ work.addEventListener("input", () => {
 });
 
 work.addEventListener("input", () => {
-    let reg = /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/;
+    let reg = /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z ]$/;
     let inp = work.value;
 
     if (reg.test(inp)) {
@@ -73,7 +74,7 @@ birth.addEventListener("input", () => {
 });
 
 birth.addEventListener("input", () => {
-    let reg = /^[A-Z][a-zA-Z ]*[a-zA-Z]$/;
+    let reg = /^[A-Z][a-zA-Z ]*[a-zA-Z ]$/;
     let inp = birth.value;
 
     if (reg.test(inp)) {
@@ -91,7 +92,7 @@ hobby.addEventListener("input", () => {
 });
 
 hobby.addEventListener("input", () => {
-    let reg = /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/;
+    let reg = /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z ]$/;
     let inp = hobby.value;
 
     if (reg.test(inp)) {

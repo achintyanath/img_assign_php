@@ -24,7 +24,7 @@ name.addEventListener("input", () => {
 });
 
 name.addEventListener("input", () => {
-    let reg = /^[A-Z][a-zA-Z\.\' ]*[a-zA-Z]$/;
+    let reg = /^[A-Z][a-zA-Z\.\' ]*[a-zA-Z ]$/;
     let inp = name.value;
 
     if (reg.test(inp)) {
@@ -69,7 +69,7 @@ user.addEventListener("input", () => {
 
 
 user.addEventListener("input", () => {
-    let reg =/^[a-zA-Z0-9][a-zA-Z0-9]*$/;
+    let reg =/^[a-zA-Z0-9][a-zA-Z0-9 ]*$/;
     let inp = user.value;
 
     if (reg.test(inp)) {
@@ -96,7 +96,7 @@ city.addEventListener("input", () => {
 });
 
 city.addEventListener("input", () => {
-    let reg = /^[A-Z][a-zA-Z ]*[a-zA-Z]$/;
+    let reg = /^[A-Z][a-zA-Z ]*[a-zA-Z ]$/;
     let inp = city.value;
 
     if (reg.test(inp)) {
@@ -151,7 +151,7 @@ email.addEventListener("input", () => {
 
 email.addEventListener("input", () => {
     let reg =
-        /^[a-zA-Z0-9][a-zA-Z0-9\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\.]*[a-zA-Z0-9]@([a-zA-Z]+[.])+[a-zA-z]+$/;
+        /^[a-zA-Z0-9][a-zA-Z0-9\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\.]*[a-zA-Z0-9]@([a-zA-Z]+[.])+[a-zA-z ]+$/;
     let inp = email.value;
 
     if (reg.test(inp)) {

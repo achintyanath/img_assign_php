@@ -2,6 +2,9 @@
 
 session_destroy();
 include "connection.php";
+//Code if cookie is set 
+
+
 
 function xss($entry) {
     $entry= trim($entry);
@@ -9,12 +12,13 @@ function xss($entry) {
     $entry = htmlspecialchars($entry);
     return $entry;
   }
-$username=xss($_POST['username']);
-$password=xss($_POST['password']);
-
+  $username=xss($_POST['username']);
+  $password=xss($_POST['password']);
+  
 if($_SERVER['REQUEST_METHOD']=="POST"){
+
 $selection = " SELECT user_name, pass FROM user WHERE user_name= '$username' AND pass='$password'";
-echo $selection;
+//echo $selection;
 $numofrows = mysqli_num_rows(mysqli_query($mysqli,$selection));
 
 $selection = " SELECT validation FROM user WHERE user_name= '$username' ";
@@ -27,8 +31,13 @@ $col1 =$row['validation'];
 if($numofrows==1){
     session_start();
     echo "You are logged in";
-   
     $_SESSION['username']= $username;
+//code for setcookie
+if(isset($_POST['remember'])){
+    setcookie('username',$username,time()+60*60*24*7);
+    setcookie('password',$password,time()+60*60*24*7);
+}
+   
     if($col1==0){
     header('location:update2.php');
     }
@@ -115,3 +124,15 @@ else{
 </body>
 
 </html>
+<?php
+if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
+    $email1=$_COOKIE['username'];
+    $password1=$_COOKIE['password'];
+    echo "<script>document.getElementById(\"username\").value='$email1';
+    document.getElementById(\"password\").value='$password1';
+    document.getElementById(\"button\").click();
+    
+    </script>";
+    }
+
+?>

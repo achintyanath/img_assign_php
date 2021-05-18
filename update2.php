@@ -15,7 +15,7 @@ include "connection.php";
 $target_dir = "uploads/";
 $check1 = basename($_FILES["fileToUpload"]["name"]);
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-echo $check1;
+//echo $check1;
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $flag5 = true;
         }
     }
-
+echo "apple";
     //$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     //print_r($check);
     if ($check1 == false) {
@@ -269,23 +269,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <button type="submit" form="form3" value="Submit" id="button" name="submit" style>Update</button>
                             </td>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
                 </table>
             </form>
 
         </div>
     </div>
-    <script src="update2.js"></script>
+ <script src="update2.js"></script>
 </body>
 
 </html>
