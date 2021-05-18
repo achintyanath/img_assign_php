@@ -1,7 +1,19 @@
 <?php
 
 include "connection.php";
-$username=$_POST['username'];
+if(!isset($_SESSION['username'])){
+    header('location:login.php');
+}
+
+function xss($entry) {
+    $entry= trim($entry);
+    $entry = stripslashes($entry);
+    $entry = htmlspecialchars($entry);
+    return $entry;
+  }
+
+
+$username=xss($_POST['username']);
 //print_r($_POST);
 $selection = " SELECT user_name FROM user WHERE user_name= '$username'";
 

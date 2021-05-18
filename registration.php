@@ -1,6 +1,13 @@
 <?php
 
 include "connection.php";
+
+function xss($entry) {
+    $entry= trim($entry);
+    $entry = stripslashes($entry);
+    $entry = htmlspecialchars($entry);
+    return $entry;
+  }
 $name_err = "";
 $username_err = "";
 $city_err = "";
@@ -13,16 +20,16 @@ $password_err = "";
 $confirmpass_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $username = $_POST['username'];
-    $city = $_POST['cityname'];
-    $gender = $_POST['gender'];
-    $age = $_POST['age'];
-    $education = $_POST['qualification'];
-    $phone = $_POST['phonenumber'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirmpass=$_POST['confirmpass'];
+    $name = xss($_POST['name']);
+    $username = xss($_POST['username']);
+    $city = xss($_POST['cityname']);
+    $gender = xss($_POST['gender']);
+    $age = xss($_POST['age']);
+    $education = xss($_POST['qualification']);
+    $phone = xss($_POST['phonenumber']);
+    $email = xss($_POST['email']);
+    $password = xss($_POST['password']);
+    $confirmpass=xss($_POST['confirmpass']);
 
     $flag1 = false;
     $flag2 = false;

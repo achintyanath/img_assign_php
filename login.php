@@ -1,20 +1,21 @@
 <?php
-session_start();
 
+session_destroy();
 include "connection.php";
 
-$username=$_POST['username'];
-$password=$_POST['password'];
-//print_r($_POST);
-//echo $username;
-//echo $password;
+function xss($entry) {
+    $entry= trim($entry);
+    $entry = stripslashes($entry);
+    $entry = htmlspecialchars($entry);
+    return $entry;
+  }
+$username=xss($_POST['username']);
+$password=xss($_POST['password']);
+
 if($_SERVER['REQUEST_METHOD']=="POST"){
 $selection = " SELECT user_name, pass FROM user WHERE user_name= '$username' AND pass='$password'";
-
+echo $selection;
 $numofrows = mysqli_num_rows(mysqli_query($mysqli,$selection));
-//echo $numofrows;
-//$validate=false;
-
 
 $selection = " SELECT validation FROM user WHERE user_name= '$username' ";
 $done = mysqli_query($mysqli,$selection);
@@ -22,8 +23,11 @@ $row =$done->fetch_assoc();
 $col1 =$row['validation'];
 
 
+
 if($numofrows==1){
+    session_start();
     echo "You are logged in";
+   
     $_SESSION['username']= $username;
     if($col1==0){
     header('location:update2.php');

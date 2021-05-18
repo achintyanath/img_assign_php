@@ -153,6 +153,7 @@ email.addEventListener("click", () => {
 pass.addEventListener("click", () => {
   document.getElementById("rowname8").innerHTML =
     ' <form id="formid7" action="check3.php" method="post"><input type="password" id="pass" name="pass" /><button type="submit" form="formid7" value="Submit" id ="button7" disabled>Change</button></form>';
+    document.getElementById("instructions").style.display = "inline";
 
   const pass2 = document.getElementById("pass");
 
@@ -161,7 +162,7 @@ pass.addEventListener("click", () => {
   });
 
   pass2.addEventListener("input", () => {
-    let reg = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\#\?\!\@\$\%\^\&\*\-\.]).{8,}$/;
+    let reg = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[\#\?\!\@\$\%\^\&\*\-\.]).{8,}$/;
     var inp2 = pass2.value;
 
     if (reg.test(inp2)) {

@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['username'])){
+    header('location:login.php');
+}
+
 $username1=$_SESSION['username'];
 //echo $username1;
 include "connection.php";

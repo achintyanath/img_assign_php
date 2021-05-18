@@ -170,7 +170,7 @@ password.addEventListener("input", () => {
 });
 
 password.addEventListener("input", () => {
-    let reg = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\#\?\!\@\$\%\^\&\*\-\.]).{8,}$/;
+    let reg = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[\#\?\!\@\$\%\^\&\*\-\.]).{8,}$/;
     var inp2 = password.value;
 
     if (reg.test(inp2)) {

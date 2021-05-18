@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['username'])){
+    header('location:login.php');
+}
+
 include "imgc.php";
 ?>
 <?php
@@ -23,10 +28,11 @@ include "imgc.php";
 <body>
     <div id="container">
 
-    <div id="display">
-            <div id="name9">Username:<?php echo $_SESSION['username']?>
-            </div>
+        <div id="display">
+            <div id="name9">Username:<?php echo $_SESSION['username']?></div>
+            
             <div><img src="<?php echo $imageURL ?>" id="image1" alt="profilephoto"></div>
+            <div> <button><a href="logout.php">Logout</a></button></div>
         </div>
         <h1>
             Welcome to Chatbook!</h1>
@@ -134,8 +140,11 @@ include "imgc.php";
     <td><button id = \"buttonname8\">Edit</button></td>
     <td id= \"rowname8\"></td>
     <td> <div id=\"errormessage6\" style=\"display:none\">
-    Enter a valid password
-</div> </td>
+    Enter a valid password<br>
+</div> <p id=\"instructions\" style=\"display:none\">
+Atleast 8 characters, one upper letter,one lower letter,one number & one special
+character.
+</p></td>
     </tr>
 
     <tr>

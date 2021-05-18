@@ -2,6 +2,10 @@
 
 session_start();
 include "imgc.php";
+if(!isset($_SESSION['username'])){
+    header('location:login.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +22,11 @@ include "imgc.php";
 <body>
     <div id="container">
         <div id="display">
-            <div id="name9">Username:<?php echo $_SESSION['username']?>
-            </div>
+            <div id="name9"><?php echo $_SESSION['username']?></div>
+
             <div><img src="<?php echo $imageURL ?>" id="image1" alt="profilephoto"></div>
+
+            <div> <button><a href="logout.php">Logout</a></button></div>
         </div>
         <h1 class="heading">Welcome To Chatbook</h1>
         <h2 id="heading2">Here is the list of all users you can chat with.</h2>

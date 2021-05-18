@@ -28,7 +28,7 @@ college.addEventListener("input", () => {
        
         flag1 = false;
     }
-    check();
+    //check();
     return flag1;
 });
 
@@ -46,7 +46,7 @@ school.addEventListener("input", () => {
         document.getElementById("errormessage2").style.display = "inline";
         flag2 = false;
     }
-    check();
+    //check();
     return flag2;
 });
 
@@ -64,7 +64,7 @@ work.addEventListener("input", () => {
         document.getElementById("errormessage4").style.display = "inline";
         flag3 = false;
     }
-    check();
+    //check();
     return flag3;
 });
 
@@ -82,7 +82,7 @@ birth.addEventListener("input", () => {
         document.getElementById("errormessage3").style.display = "inline";
         flag4 = false;
     }
-    check();
+   // check();
     return flag4;
 });
 
@@ -101,7 +101,7 @@ hobby.addEventListener("input", () => {
         flag5 = false;
         return flag5;
     }
-    check();
+    ///check();
     return flag5;
 });
 
