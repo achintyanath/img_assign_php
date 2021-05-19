@@ -22,7 +22,7 @@ name.addEventListener("click", () => {
   });
 
   name2.addEventListener("input", () => {
-    let reg = /^[A-Z][a-zA-Z\.\' ]*[a-zA-Z]$/;
+    let reg = /^[A-Z][a-zA-Z\.\' ]*[a-zA-Z ]$/;
     let inp = name2.value;
 
     if (reg.test(inp)) {
@@ -51,7 +51,7 @@ city.addEventListener("click", () => {
   });
 
   city2.addEventListener("input", () => {
-    let reg = /^[A-Z][a-zA-Z ]*[a-zA-Z]$/;
+    let reg = /^[A-Z][a-zA-Z ]*[a-zA-Z ]$/;
     let inp = city2.value;
 
     if (reg.test(inp)) {
@@ -138,7 +138,7 @@ email.addEventListener("click", () => {
 
   email2.addEventListener("input", () => {
     let reg =
-      /^[a-zA-Z0-9][a-zA-Z0-9\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\.]*[a-zA-Z0-9]@([a-zA-Z]+[.])+[a-zA-z]+$/;
+      /^[a-zA-Z0-9][a-zA-Z0-9\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\.]*[a-zA-Z0-9]@([a-zA-Z]+[.])+[a-zA-z ]+$/;
     let inp = email2.value;
 
     if (reg.test(inp)) {
@@ -189,7 +189,7 @@ college.addEventListener("click", () => {
 
   college2.addEventListener("input", () => {
     let reg =
-      /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/;
+      /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z ]$/;
     let inp2 = college2.value;
 
     if (reg.test(inp2)) {
@@ -216,7 +216,7 @@ school.addEventListener("click", () => {
 
   school2.addEventListener("input", () => {
     let reg =
-      /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/;
+      /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z ]$/;
     let inp2 = school2.value;
 
     if (reg.test(inp2)) {
@@ -242,7 +242,7 @@ birth.addEventListener("click", () => {
   });11
 
   birth2.addEventListener("input", () => {
-    let reg = /^[A-Z][a-zA-Z ]*[a-zA-Z]$/;
+    let reg = /^[A-Z][a-zA-Z ]*[a-zA-Z ]$/;
     let inp2 = birth2.value;
 
     if (reg.test(inp2)) {
@@ -269,7 +269,7 @@ work.addEventListener("click", () => {
 
   work2.addEventListener("input", () => {
     let reg =
-      /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/;
+      /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z ]$/;
     let inp2 = work2.value;
 
     if (reg.test(inp2)) {
@@ -295,7 +295,7 @@ hobby.addEventListener("click", () => {
 
   hobby2.addEventListener("input", () => {
     let reg =
-      /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z]$/;
+      /^[A-Z][a-zA-Z0-9\.\' \!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\,]*[a-zA-Z ]$/;
     let inp2 = hobby2.value;
 
     if (reg.test(inp2)) {

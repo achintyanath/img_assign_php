@@ -224,6 +224,7 @@ character.
 
 
     </div>
+    <div> <p> <a href="chat.php">Chat page</a></p></div>
     <script src="update.js"></script>
 </body>
 

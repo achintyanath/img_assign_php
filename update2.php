@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $flag5 = true;
         }
     }
-echo "apple";
+
     //$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     //print_r($check);
     if ($check1 == false) {
@@ -121,7 +121,7 @@ echo "apple";
         //echo "Done";
     }
     //print_r($_POST);
-    print_r($_FILES);
+    //print_r($_FILES);
 
     if ($flag1 && $flag2 && $flag3 && $flag4 && $flag5 && $flag6) {
         foreach ($_POST as $key => $v) {
