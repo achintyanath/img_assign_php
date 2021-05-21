@@ -46,7 +46,7 @@ user.addEventListener("input", () => {
 
     xhr.send(param);
     xhr.onload = function () {
-        var obj = this.responseText;
+        var obj = this.responseText.trim();
 
         if (obj == "yes") {
             document.getElementById("mess").innerHTML = "Username available";

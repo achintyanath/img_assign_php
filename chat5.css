@@ -1,0 +1,87 @@
+#display{
+    position:absolute;
+    right: 0px;
+    top:0px;
+}
+#image1{
+    height:50px;
+}
+a:link {
+    text-decoration: none;
+  }
+
+
+  #chatbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position:absolute;
+    top: 40%;
+    left: 50%;
+    width:350px;
+    height:475px;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color:#eecce3;
+  }/*
+  #prem{
+    
+   
+    width:17.75rem;
+    height:23em;
+    
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+    
+  }
+  #msg{
+  
+    
+    width:17.75rem;
+    height:5em;
+  
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+  }
+
+  
+  #btn{
+ position:absolute;;
+ bottom: 0em;
+ right:0em;
+   
+   }
+
+   #close{
+    position:absolute;;
+    top: 0em;
+    right:0em;
+      
+      }*/
+     p {
+        display: block;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    li {
+      margin-top:1em;
+      margin-bottom: 1em;
+    }
+
+    #chatbox * {
+      
+      overflow-anchor: none;
+  }
+  
+  #anchor {
+    
+      overflow-anchor: auto;
+      height: 1px;
+  }
+  ul{
+    padding-inline-start: 0px;
+  }

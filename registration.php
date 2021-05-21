@@ -135,12 +135,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($flag1&&$flag2&&$flag3&&$flag4&&$flag5&&$flag7&&$flag8&&$flag9) {
 
         //print("INSERT INTO user (user_name,name,city,gender,age,education,phone,email,pass) VALUES (\"" . $username . "\",\"" . $name . "\",\"" . $city . "\",\"" . $gender . "\"," . $age . ",\"" . $education . "\"," . $phone . ",\"" . $email . "\",\"" . $password . "\");");
+        $selection = "INSERT INTO user (user_name,name,city,gender,age,education,phone,email,pass) VALUES ('$username','$name','$city','$gender',$age,'$education',$phone,'$email','$password')";
+        print_r($selection);
+        /*$connection = $mysqli->query("INSERT INTO user (user_name,name,city,gender,age,education,phone,email,pass) VALUES (\"" . $username . "\",\"" . $name . "\",\"" . $city . "\",\"" . $gender . "\"," . $age . ",\"" . $education . "\"," . $phone . ",\"" . $email . "\",\"" . $password . "\");");
 
-        $connection = $mysqli->query("INSERT INTO user (user_name,name,city,gender,age,education,phone,email,pass) VALUES (\"" . $username . "\",\"" . $name . "\",\"" . $city . "\",\"" . $gender . "\"," . $age . ",\"" . $education . "\"," . $phone . ",\"" . $email . "\",\"" . $password . "\");");
+        $connection = "INSERT INTO user (user_name,name,city,gender,age,education,phone,email,pass) VALUES (\"" . $username . "\",\"" . $name . "\",\"" . $city . "\",\"" . $gender . "\"," . $age . ",\"" . $education . "\"," . $phone . ",\"" . $email . "\",\"" . $password . "\");";
+*/
+        $done = mysqli_query($mysqli,$selection);
         session_start();
         $_SESSION['username'] = $username;
         echo $_SESSION['username'];
-        header('location:update2.php');
+       header('location:update2.php');
     }
 }
 
